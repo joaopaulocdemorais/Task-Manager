@@ -9,12 +9,13 @@ package br.com.taskManeger.telas;
  *
  * @author joaop
  */
-public class Centro extends javax.swing.JFrame {
+public class JfCentro extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form centro
      */
-    public Centro() {
+    public JfCentro() {
         initComponents();
         BoasVindas boasVindas = new BoasVindas();
         boasVindas.setVisible(true);
