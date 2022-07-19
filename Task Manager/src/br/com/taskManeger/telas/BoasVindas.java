@@ -35,8 +35,6 @@ public class BoasVindas extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(176, 226, 152));
-        setClosable(true);
-        setIconifiable(true);
         setPreferredSize(new java.awt.Dimension(900, 640));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/taskManeger/icones/Task Manager (1) (1).png"))); // NOI18N
