@@ -6,13 +6,17 @@
 package br.com.taskManeger.telas;
 
 import java.awt.Color;
-
+import java.sql.*;
+import br.com.taskManeger.dal.ModuloConexao;
 /**
  *
  * @author joaop
  */
 public class TelaLogin extends javax.swing.JInternalFrame {
-
+    
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
     /**
      * Creates new form TelaLogin
      */
@@ -20,6 +24,8 @@ public class TelaLogin extends javax.swing.JInternalFrame {
         initComponents();
         getContentPane().setBackground(new Color(58,80,107));
         this.setVisible(true);
+        conexao = ModuloConexao.conector();
+        System.out.println(conexao);
     }
 
     /**
