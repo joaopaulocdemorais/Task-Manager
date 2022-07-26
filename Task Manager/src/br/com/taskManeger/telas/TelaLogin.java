@@ -8,6 +8,7 @@ package br.com.taskManeger.telas;
 import java.awt.Color;
 import java.sql.*;
 import br.com.taskManeger.dal.ModuloConexao;
+import javax.swing.JOptionPane;
 /**
  *
  * @author joaop
@@ -26,6 +27,13 @@ public class TelaLogin extends javax.swing.JInternalFrame {
             pst.setString(1, txtCpf.getText());
             pst.setString(2, txtSenha.getText());
             rs = pst.executeQuery();
+            
+            if (rs.next()){
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "BEM VINDO!");
+            }else{
+                JOptionPane.showMessageDialog(null,"USUÁRIO OU SENNHA INCORRETOS");
+            }
         } catch (Exception e) {
         }
     }
@@ -37,6 +45,7 @@ public class TelaLogin extends javax.swing.JInternalFrame {
         getContentPane().setBackground(new Color(58,80,107));
         this.setVisible(true);
         conexao = ModuloConexao.conector();
+        System.out.println(conexao);
     }
 
     /**
@@ -199,6 +208,7 @@ public class TelaLogin extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        logar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
