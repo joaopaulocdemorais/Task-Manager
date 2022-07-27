@@ -1,8 +1,11 @@
 package br.com.taskManeger.telas;
 
 
+import br.com.taskManeger.dal.ModuloConexao;
 import br.com.taskManeger.telas.BoasVindas;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.sql.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,6 +22,10 @@ public class JCentro extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    
+    
+    
     public JCentro() {
         initComponents();
         getContentPane().setBackground(new Color(58,80,107));

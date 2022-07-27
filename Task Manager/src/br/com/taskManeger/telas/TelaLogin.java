@@ -15,28 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JInternalFrame {
     
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-    
-    public void logar(){
-        String sql = "select * from tuser where cpf=? and senha=?;";
-        try {
-            //as linhas abaixo prepara a consulta ao banco de dados
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCpf.getText());
-            pst.setString(2, txtSenha.getText());
-            rs = pst.executeQuery();
-            
-            if (rs.next()){
-                this.setVisible(false);
-                JOptionPane.showMessageDialog(null, "BEM VINDO!");
-            }else{
-                JOptionPane.showMessageDialog(null,"USUÁRIO OU SENNHA INCORRETOS");
-            }
-        } catch (Exception e) {
-        }
-    }
     /**
      * Creates new form TelaLogin
      */
@@ -44,8 +22,6 @@ public class TelaLogin extends javax.swing.JInternalFrame {
         initComponents();
         getContentPane().setBackground(new Color(58,80,107));
         this.setVisible(true);
-        conexao = ModuloConexao.conector();
-        System.out.println(conexao);
     }
 
     /**
@@ -208,7 +184,7 @@ public class TelaLogin extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        logar();
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
