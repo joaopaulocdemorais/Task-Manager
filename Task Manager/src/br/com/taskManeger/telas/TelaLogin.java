@@ -5,6 +5,7 @@
  */
 package br.com.taskManeger.telas;
 
+import br.com.taskManeger.dal.Logar;
 import java.awt.Color;
 import java.sql.*;
 import br.com.taskManeger.dal.ModuloConexao;
@@ -184,11 +185,13 @@ public class TelaLogin extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-     
+        if(new Logar().logar(txtCpf.getText(), txtSenha.getText())){
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
     }//GEN-LAST:event_txtSenhaActionPerformed
 
 

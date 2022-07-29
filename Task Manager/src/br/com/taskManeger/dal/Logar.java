@@ -39,6 +39,8 @@ public class Logar {
                 return false;
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL ENTRAR NO SISTEMA, ENTRE EM CONTATO COM O DESENVOLVEDOR");
+            return false;
         }
     }
 
