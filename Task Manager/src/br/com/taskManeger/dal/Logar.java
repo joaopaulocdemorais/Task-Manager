@@ -32,7 +32,6 @@ public class Logar {
             rs = pst.executeQuery();
             
             if (rs.next()){
-                 JOptionPane.showMessageDialog(null, "BEM VINDO!");
                  return true;
             }else{
                 JOptionPane.showMessageDialog(null,"USUÁRIO OU SENNHA INCORRETOS");
