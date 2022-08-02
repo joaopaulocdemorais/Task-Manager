@@ -180,7 +180,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        setBounds(150, 120, 600, 400);
+        setSize(new java.awt.Dimension(600, 400));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
