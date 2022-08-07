@@ -176,6 +176,9 @@ public class JCentro extends javax.swing.JFrame {
 
     private void btnAddUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUsuarioActionPerformed
         // TODO add your handling code here:
+        CadUso cad = new CadUso();
+        cad.setVisible(true);
+        PCentro.add(cad);
     }//GEN-LAST:event_btnAddUsuarioActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
