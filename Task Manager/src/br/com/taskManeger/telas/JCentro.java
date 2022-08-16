@@ -33,6 +33,8 @@ public class JCentro extends javax.swing.JFrame {
         boasVindas.setVisible(true);
         PCentro.add(boasVindas);
         PCentro.setSelectedFrame(boasVindas);
+        
+        
     }
 
     /**
