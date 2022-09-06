@@ -16,6 +16,12 @@ public class CadastrarUsuario {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null; 
+
+    public CadastrarUsuario() {
+        conexao = ModuloConexao.conector();
+    }
+    
+    
         
     public void cadastrar(String tipo, String nome, String senha, String cpf){
         String sql = "insert into tuser (tipo, nome, cpf, senha) values (?,?,?,?)";
@@ -26,6 +32,7 @@ public class CadastrarUsuario {
             pst.setString(2, nome);
             pst.setString(3, senha);
             pst.setString(4, cpf);
+            
              JOptionPane.showMessageDialog(null,"USUÁRIO CADASTRADO COM SUCESSO!");
         } catch (Exception e) {
              JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL CADASTRAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
