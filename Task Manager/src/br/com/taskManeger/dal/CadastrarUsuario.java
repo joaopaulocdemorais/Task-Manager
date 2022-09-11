@@ -25,17 +25,18 @@ public class CadastrarUsuario {
         
     public void cadastrar(String tipo, String nome, String senha, String cpf){
         String sql = "insert into tuser (tipo, nome, cpf, senha) values (?,?,?,?)";
-        int t = tipo.equals("ADMINISTRADO")? 1 : 2;
+        int t = tipo.equals("ADMINISTRADOR")? 1 : 2;
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, t);
             pst.setString(2, nome);
-            pst.setString(3, senha);
-            pst.setString(4, cpf);
-            
+            pst.setString(3, cpf);
+            pst.setString(4, senha);
+            pst.executeUpdate();
              JOptionPane.showMessageDialog(null,"USUÁRIO CADASTRADO COM SUCESSO!");
         } catch (Exception e) {
              JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL CADASTRAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
+             System.out.println(e);
         }
     }
 }
