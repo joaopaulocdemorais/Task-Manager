@@ -261,6 +261,9 @@ public class CadUso extends javax.swing.JInternalFrame {
           }else{
             CadastrarUsuario cad = new CadastrarUsuario();
             cad.cadastrar(cbTipo.getSelectedItem().toString(), txtNome.getText(), txtSenha.getText(), txtCpf.getText());
+            txtNome.setText(null);
+            txtSenha.setText(null);
+            txtCpf.setText(null);
           }
     }//GEN-LAST:event_cadastrarUsuarioActionPerformed
 
