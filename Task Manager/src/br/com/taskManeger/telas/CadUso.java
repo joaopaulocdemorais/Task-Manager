@@ -6,8 +6,13 @@
 package br.com.taskManeger.telas;
 
 import br.com.taskManeger.dal.CadastrarUsuario;
+import br.com.taskManeger.dal.PesquisaNome;
+import com.mysql.cj.protocol.Resultset;
 import java.awt.Color;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -15,12 +20,15 @@ import javax.swing.JOptionPane;
  */
 public class CadUso extends javax.swing.JInternalFrame {
 
+    Resultset rs = null;
     /**
      * Creates new form cadUso
      */
     public CadUso() {
         initComponents();
         getContentPane().setBackground(new Color(255,255,255));
+        PesquisaNome pes = new PesquisaNome();
+        tblUser.setModel(DbUtils.resultSetToTableModel(pes.pesquisar("%")));
     }
     
     
@@ -44,7 +52,7 @@ public class CadUso extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         cadastrarUsuario = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblUser = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -106,7 +114,7 @@ public class CadUso extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -114,10 +122,10 @@ public class CadUso extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NOME", "CPF", "TIPO", "SENHA"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblUser);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("CADASTRAR USUÁRIO ");
@@ -290,8 +298,8 @@ public class CadUso extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tblUser;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;

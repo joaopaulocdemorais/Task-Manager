@@ -36,7 +36,6 @@ public class CadastrarUsuario {
              JOptionPane.showMessageDialog(null,"USUÁRIO CADASTRADO COM SUCESSO!");
         } catch (Exception e) {
              JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL CADASTRAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
-             System.out.println(e);
         }
     }
 }

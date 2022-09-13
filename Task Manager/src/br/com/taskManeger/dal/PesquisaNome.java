@@ -8,6 +8,8 @@ package br.com.taskManeger.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,11 +24,15 @@ public class PesquisaNome {
     public ResultSet pesquisar(String valor){
         try {
          conexao = ModuloConexao.conector();
-         String sql = "select * from tuser where nome like ?;";   
-        } catch (Exception e) {
+         String sql = "select * from tuser where nome like ?;";
+         pst = conexao.prepareStatement(sql);
+         pst.setString(1, valor + "%");
+         rs = pst.executeQuery();
+         return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"NÃO FOI PESQUISAR USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
+            return null;
         }
-        
-    return rs;
     }
     
 }
