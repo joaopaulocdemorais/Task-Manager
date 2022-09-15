@@ -24,7 +24,7 @@ public class PesquisaNome {
     public ResultSet pesquisar(String valor){
         try {
          conexao = ModuloConexao.conector();
-         String sql = "select * from tuser where nome like ?;";
+         String sql = "select id as ID, nome as NOME, cpf as CPF, senha as Senha, tipo as TIPO from tuser where nome like ?;";
          pst = conexao.prepareStatement(sql);
          pst.setString(1, valor + "%");
          rs = pst.executeQuery();
