@@ -115,6 +115,11 @@ public class CadUso extends javax.swing.JInternalFrame {
             }
         });
 
+        tblUser = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -132,6 +137,13 @@ public class CadUso extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblUser.setFocusable(false);
+        tblUser.getTableHeader().setReorderingAllowed(false);
+        tblUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUserMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblUser);
@@ -321,7 +333,19 @@ public class CadUso extends javax.swing.JInternalFrame {
         tblUser.setModel(DbUtils.resultSetToTableModel(pesq.pesquisar(txtPes.getText())));
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void tblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserMouseClicked
+        // TODO add your handling code here:
+        getcampostable();
+    }//GEN-LAST:event_tblUserMouseClicked
 
+    public void getcampostable() {
+        int setar = tblUser.getSelectedRow();
+        txtNome.setText(tblUser.getModel().getValueAt(setar, 1).toString());
+        txtCpf.setText(tblUser.getModel().getValueAt(setar, 2).toString());
+        txtSenha.setText(tblUser.getModel().getValueAt(setar, 4).toString());
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton cadastrarUsuario;
