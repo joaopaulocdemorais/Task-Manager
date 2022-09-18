@@ -28,6 +28,8 @@ public class CadUso extends javax.swing.JInternalFrame {
         initComponents();
         getContentPane().setBackground(new Color(255,255,255));
         PesquisaNome pes = new PesquisaNome();
+        alterarUsuario.setEnabled(false);
+        excluirUsuario.setEnabled(false);
         tblUser.setModel(DbUtils.resultSetToTableModel(pes.pesquisar("%")));
     }
     
@@ -54,8 +56,8 @@ public class CadUso extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUser = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        alterarUsuario = new javax.swing.JButton();
+        excluirUsuario = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtPes = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -151,16 +153,16 @@ public class CadUso extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("CADASTRAR USUÁRIO ");
 
-        jButton3.setText("ALTERAR");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 100));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        alterarUsuario.setText("ALTERAR");
+        alterarUsuario.setPreferredSize(new java.awt.Dimension(100, 100));
+        alterarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                alterarUsuarioActionPerformed(evt);
             }
         });
 
-        jButton4.setText("EXCLUIR");
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 100));
+        excluirUsuario.setText("EXCLUIR");
+        excluirUsuario.setPreferredSize(new java.awt.Dimension(100, 100));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel7.setText("NOME");
@@ -225,9 +227,9 @@ public class CadUso extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(262, 262, 262)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(3, 3, 3)
                                     .addComponent(jLabel6))
@@ -273,8 +275,8 @@ public class CadUso extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59))
         );
 
@@ -293,9 +295,9 @@ public class CadUso extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_alterarUsuarioActionPerformed
 
     private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed
           // TODO add your handling code here:
@@ -340,19 +342,27 @@ public class CadUso extends javax.swing.JInternalFrame {
 
     public void getcampostable() {
         int setar = tblUser.getSelectedRow();
+        String tp = null;
         txtNome.setText(tblUser.getModel().getValueAt(setar, 1).toString());
         txtCpf.setText(tblUser.getModel().getValueAt(setar, 2).toString());
-        txtSenha.setText(tblUser.getModel().getValueAt(setar, 4).toString());
+        txtSenha.setText(tblUser.getModel().getValueAt(setar, 3).toString());
+        tp = tblUser.getModel().getValueAt(setar,4).toString();
+        cbTipo.setSelectedItem(tp.equals("1")?"ADMINISTRADOR":"PADRÃO");
+        alterarUsuario.setEnabled(true);
+        excluirUsuario.setEnabled(true);
+        cadastrarUsuario.setEnabled(false);
+        jLabel6.setText("ATUALIZAÇÃO DE USUÁRIOS");
+        
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterarUsuario;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton cadastrarUsuario;
     private javax.swing.JComboBox<String> cbTipo;
+    private javax.swing.JButton excluirUsuario;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
