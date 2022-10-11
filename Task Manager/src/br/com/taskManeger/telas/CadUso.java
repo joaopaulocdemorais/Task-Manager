@@ -5,6 +5,7 @@
  */
 package br.com.taskManeger.telas;
 
+import br.com.taskManeger.dal.AtualizarUsuario;
 import br.com.taskManeger.dal.CadastrarUsuario;
 import br.com.taskManeger.dal.PesquisaNome;
 import com.mysql.cj.protocol.Resultset;
@@ -297,6 +298,12 @@ public class CadUso extends javax.swing.JInternalFrame {
 
     private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
         // TODO add your handling code here:
+        AtualizarUsuario atu = new AtualizarUsuario();
+        if(atu.atualizar(txtNome.getText(), txtCpf.getText(), cbTipo.getSelectedItem().toString(), txtSenha.getText(),"5")){
+            JOptionPane.showMessageDialog(null, "USUÁRIO ATUALIZADO COM SUCESSO!");
+        }else{
+            JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL ATUALIZAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
+        }
     }//GEN-LAST:event_alterarUsuarioActionPerformed
 
     private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed

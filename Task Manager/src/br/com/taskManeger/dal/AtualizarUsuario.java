@@ -8,6 +8,7 @@ package br.com.taskManeger.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,19 +20,21 @@ public class AtualizarUsuario {
     PreparedStatement pst = null;
     ResultSet rs = null;
     
-    public boolean atualizar(String nome, String cpf, int tipo, String senha, String id){
+    public boolean atualizar(String nome, String cpf, String tipo, String senha, String id){
         try {
+            int t = tipo.equals("ADMINISTRADOR")? 1 : 2;
             conexao = ModuloConexao.conector();
             String sql = "update tuser set nome = ?, cpf = ?, tipo = ?, senha = ? where id = ?";
             pst = conexao.prepareStatement(sql);
             pst.setString(1, nome);
             pst.setString(2, cpf);
-            pst.setInt(3, tipo);
+            pst.setInt(3, t);
             pst.setString(4, senha);
             pst.setString(5, id);
-            rs = pst.executeQuery();
+            pst.executeUpdate();
             return true;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
             return false;
         }
     };
