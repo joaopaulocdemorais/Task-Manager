@@ -32,6 +32,7 @@ public class CadUso extends javax.swing.JInternalFrame {
         alterarUsuario.setEnabled(false);
         excluirUsuario.setEnabled(false);
         tblUser.setModel(DbUtils.resultSetToTableModel(pes.pesquisar("%")));
+        txtID.setVisible(false);
     }
     
     
@@ -63,6 +64,7 @@ public class CadUso extends javax.swing.JInternalFrame {
         txtPes = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -188,6 +190,9 @@ public class CadUso extends javax.swing.JInternalFrame {
             }
         });
 
+        txtID.setEditable(false);
+        txtID.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,26 +221,30 @@ public class CadUso extends javax.swing.JInternalFrame {
                                 .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPes, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addGap(3, 3, 3)
-                                .addComponent(btnLimpar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(262, 262, 262)
+                                        .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(262, 262, 262)
-                                    .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(jLabel6))
-                                .addComponent(jLabel5)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(txtPes, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButton2)
+                                            .addGap(3, 3, 3)
+                                            .addComponent(btnLimpar))
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel6)))
                         .addContainerGap(28, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -252,7 +261,8 @@ public class CadUso extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -298,9 +308,10 @@ public class CadUso extends javax.swing.JInternalFrame {
 
     private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
         // TODO add your handling code here:
-        AtualizarUsuario atu = new AtualizarUsuario();
-        if(atu.atualizar(txtNome.getText(), txtCpf.getText(), cbTipo.getSelectedItem().toString(), txtSenha.getText(),"5")){
+                AtualizarUsuario atu = new AtualizarUsuario();
+        if(atu.atualizar(txtNome.getText(), txtCpf.getText(), cbTipo.getSelectedItem().toString(), txtSenha.getText(),txtID.getText())){
             JOptionPane.showMessageDialog(null, "USUÁRIO ATUALIZADO COM SUCESSO!");
+            tblUser.setModel(DbUtils.resultSetToTableModel(new PesquisaNome().pesquisar("%")));
         }else{
             JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL ATUALIZAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
         }
@@ -350,6 +361,7 @@ public class CadUso extends javax.swing.JInternalFrame {
     public void getcampostable() {
         int setar = tblUser.getSelectedRow();
         String tp = null;
+        txtID.setText(tblUser.getModel().getValueAt(setar, 0).toString());
         txtNome.setText(tblUser.getModel().getValueAt(setar, 1).toString());
         txtCpf.setText(tblUser.getModel().getValueAt(setar, 2).toString());
         txtSenha.setText(tblUser.getModel().getValueAt(setar, 3).toString());
@@ -380,6 +392,7 @@ public class CadUso extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUser;
     private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPes;
     private javax.swing.JTextField txtSenha;
