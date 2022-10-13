@@ -166,6 +166,11 @@ public class CadUso extends javax.swing.JInternalFrame {
 
         excluirUsuario.setText("EXCLUIR");
         excluirUsuario.setPreferredSize(new java.awt.Dimension(100, 100));
+        excluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel7.setText("NOME");
@@ -312,6 +317,7 @@ public class CadUso extends javax.swing.JInternalFrame {
         if(atu.atualizar(txtNome.getText(), txtCpf.getText(), cbTipo.getSelectedItem().toString(), txtSenha.getText(),txtID.getText())){
             JOptionPane.showMessageDialog(null, "USUÁRIO ATUALIZADO COM SUCESSO!");
             tblUser.setModel(DbUtils.resultSetToTableModel(new PesquisaNome().pesquisar("%")));
+            limpar();
         }else{
             JOptionPane.showMessageDialog(null,"NÃO FOI POSSIVEL ATUALIZAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
         }
@@ -358,6 +364,11 @@ public class CadUso extends javax.swing.JInternalFrame {
         getcampostable();
     }//GEN-LAST:event_tblUserMouseClicked
 
+    private void excluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuarioActionPerformed
+        // TODO add your handling code here:
+        limpar();
+    }//GEN-LAST:event_excluirUsuarioActionPerformed
+
     public void getcampostable() {
         int setar = tblUser.getSelectedRow();
         String tp = null;
@@ -374,6 +385,16 @@ public class CadUso extends javax.swing.JInternalFrame {
         
     }
     
+    private void limpar(){
+        txtNome.setText(null);
+        txtCpf.setText(null);
+        txtSenha.setText(null);
+        txtID.setText(null);
+        cbTipo.setSelectedIndex(0);
+        alterarUsuario.setEnabled(false);
+        excluirUsuario.setEnabled(false);
+        cadastrarUsuario.setEnabled(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarUsuario;
