@@ -21,13 +21,16 @@ public class DeletarUsuario {
     PreparedStatement pst = null;
     ResultSet rs = null; 
     
-    public void deletar(String id){
+    public void deletar(int id){
         try {
             String sql = "delete from tuser where id = ?;";
             conexao = ModuloConexao.conector();
             pst = conexao.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "USUÁRIO DELETADO!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "");
+            JOptionPane.showMessageDialog(null, "NÃO FOI DELETAR O USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
         } 
     }
     

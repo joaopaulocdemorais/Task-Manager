@@ -7,6 +7,7 @@ package br.com.taskManeger.telas;
 
 import br.com.taskManeger.dal.AtualizarUsuario;
 import br.com.taskManeger.dal.CadastrarUsuario;
+import br.com.taskManeger.dal.DeletarUsuario;
 import br.com.taskManeger.dal.PesquisaNome;
 import com.mysql.cj.protocol.Resultset;
 import java.awt.Color;
@@ -366,6 +367,10 @@ public class CadUso extends javax.swing.JInternalFrame {
 
     private void excluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuarioActionPerformed
         // TODO add your handling code here:
+        DeletarUsuario del = new DeletarUsuario();
+        del.deletar( Integer.parseInt(txtID.getText()));
+        PesquisaNome pesq = new PesquisaNome();
+        tblUser.setModel(DbUtils.resultSetToTableModel(pesq.pesquisar("%")));
         limpar();
     }//GEN-LAST:event_excluirUsuarioActionPerformed
 
