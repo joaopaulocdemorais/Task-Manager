@@ -170,6 +170,9 @@ public class JCentro extends javax.swing.JFrame {
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
         // TODO add your handling code here:
+        CriarDemanda cri = new CriarDemanda();
+        cri.setVisible(true);
+        PCentro.add(cri);
     }//GEN-LAST:event_btnCriarActionPerformed
 
     private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
