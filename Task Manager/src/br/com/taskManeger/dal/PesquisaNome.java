@@ -35,4 +35,18 @@ public class PesquisaNome {
         }
     }
     
+    public ResultSet pesquisarCD(String valor){
+        try {
+         conexao = ModuloConexao.conector();
+         String sql = "select id as ID, nome as NOME from tuser where nome like ?;";
+         pst = conexao.prepareStatement(sql);
+         pst.setString(1, valor + "%");
+         rs = pst.executeQuery();
+         return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"NÃO FOI PESQUISAR USUÁRIO, ENTRE EM CONTATO COM O DESENVOLVEDOR");
+            return null;
+        }
+    }
+    
 }
