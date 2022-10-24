@@ -20,10 +20,11 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
     /**
      * Creates new form CriarDemanda
      */
+        
     public CriarDemanda() {
         initComponents();
         getContentPane().setBackground(new Color(255,255,255));
-        tbUserCD.setModel(DbUtils.resultSetToTableModel(new PesquisaNome().pesquisarCD("%")));        
+        tbUserCD.setModel(DbUtils.resultSetToTableModel(new PesquisaNome().pesquisarCD("%")));
     }
     
    private void getIdTable(){
@@ -61,6 +62,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
         btteste = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblcont = new javax.swing.JLabel();
+        IdCri = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +118,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tbUserCD);
 
-        IdSolu.setText("IdUser");
+        IdSolu.setText("IdSOLU");
 
         txtDescri.setColumns(20);
         txtDescri.setLineWrap(true);
@@ -140,6 +142,8 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
 
         lblcont.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         lblcont.setText("500");
+
+        IdCri.setText("idCri");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,6 +175,8 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(IdSolu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(IdCri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
@@ -188,7 +194,8 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
-                    .addComponent(IdSolu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IdSolu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdCri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,6 +236,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField IdCri;
     private javax.swing.JTextField IdSolu;
     private javax.swing.JButton btteste;
     private javax.swing.JLabel jLabel1;

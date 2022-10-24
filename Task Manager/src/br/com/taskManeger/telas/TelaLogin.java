@@ -189,6 +189,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if(new Logar().logar(txtCpf.getText(), txtSenha.getText())){
             this.dispose();
             JCentro centro = new JCentro();
+            JCentro.lblIdUser.setText(Integer.toString(new Logar().getUser(txtCpf.getText(), txtSenha.getText())));
             centro.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

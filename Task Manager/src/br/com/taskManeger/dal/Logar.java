@@ -42,6 +42,16 @@ public class Logar {
             return false;
         }
     }
+    
+    public int getUser(String user, String senha){
+           logar(user, senha);
+          try {
+              int id = rs.getInt(1);
+              return id;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 
     
 
