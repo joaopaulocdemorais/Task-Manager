@@ -6,6 +6,7 @@
 package br.com.taskManeger.telas;
 
 import br.com.taskManeger.dal.PesquisaNome;
+import br.com.taskManeger.dal.cadastrarDemanda;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
         tbUserCD.setModel(DbUtils.resultSetToTableModel(new PesquisaNome().pesquisarCD("%")));
         IdCri.setVisible(false);
         IdSolu.setVisible(false);
+        IdSolu.setText(null);
     }
     
    private void getIdTable(){
@@ -64,7 +66,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
         lblcont = new javax.swing.JLabel();
         IdCri = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCriaDemandas = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,8 +150,13 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("CRIAR DEMANDA");
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 150));
+        btnCriaDemandas.setText("CRIAR DEMANDA");
+        btnCriaDemandas.setPreferredSize(new java.awt.Dimension(150, 150));
+        btnCriaDemandas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriaDemandasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,7 +191,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(238, 238, 238)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCriaDemandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -216,7 +223,7 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCriaDemandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -238,12 +245,26 @@ public class CriarDemanda extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnCriaDemandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaDemandasActionPerformed
+        // TODO add your handling code here:
+        if(txtTitulo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "O CAMPO TITULO E OBRIGATÓRIO");
+        }else if(txtDescri.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "O CAMPO DESCRIÇÃO DA DEMANDA E OBRIGATÓRIO"); 
+        }else if(IdSolu.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "SELECIONAR UM RESPONSÁVEL PARA SOLUCIONAR A DEMANDA E OBRIGATÓRIO");
+        }else{
+            cadastrarDemanda cri = new cadastrarDemanda();
+            cri.cadastrar(Integer.parseInt(IdCri.getText()),Integer.parseInt(IdSolu.getText()),txtTitulo.getText(),txtDescri.getText());
+        }   
+    }//GEN-LAST:event_btnCriaDemandasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField IdCri;
     private javax.swing.JTextField IdSolu;
+    private javax.swing.JButton btnCriaDemandas;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
